@@ -88,9 +88,12 @@ public class TestTimestampTZ {
 
   @Test
   public void testPerformance() {
+    for (int i = 0; i < 100; i++) {
+      TimestampTZUtil.parse("2017-01-01 13:33:00", ZoneId.of("UTC"));
+    }
     Stopwatch sw = Stopwatch.createStarted();
     for (int i = 0; i < 10000; i++) {
-      TimestampTZ utc = TimestampTZUtil.parse("2017-01-01 13:33:00", ZoneId.of("UTC"));
+      TimestampTZUtil.parse("2017-01-01 13:33:00", ZoneId.of("UTC"));
     }
     System.out.println(sw.elapsed(TimeUnit.MILLISECONDS));
   }
